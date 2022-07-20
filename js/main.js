@@ -58,7 +58,7 @@ const posts = [
 const containerDom = document.getElementById('container');
 
 
-//for (let i = 0; i < posts.length; i++) {
+
 posts.forEach((post, i) => {
         containerDom.innerHTML += `
         <div class="post">
@@ -99,11 +99,6 @@ posts.forEach((post, i) => {
 
 const likeButton = document.querySelectorAll('.like-button');
 console.log(likeButton);
-likeButton.forEach((button, i) => {
-    likeButton[i].addEventListener("click", function() {
-        increaseLikes;
-    })
-})
 
 
 
@@ -111,6 +106,15 @@ likeButton.forEach((button, i) => {
 
 
 let increaseLikes = function () {
-    likeButton[i].classList.add('like-button--liked');
-    post[i].likes ++;
+    likeButton.forEach((button, i) => {
+        button.addEventListener("click", function(event)
+        {
+            event.preventDefault();
+            button.classList.add('like-button--liked');
+            document.getElementById("like-counter-" + posts[i].id).innerHTML = ++ posts[i].likes;
+        })
+        if ()
+    })
 }
+
+increaseLikes();
