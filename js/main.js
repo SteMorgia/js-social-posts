@@ -38,7 +38,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": null
+            "image": ''
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -58,8 +58,9 @@ const posts = [
 const containerDom = document.getElementById('container');
 
 
-for (let i = 0; i < posts.length; i++) {
-    containerDom.innerHTML += `
+//for (let i = 0; i < posts.length; i++) {
+posts.forEach((post, i) => {
+        containerDom.innerHTML += `
         <div class="post">
             <div class="post__header">
                 <div class="post-meta">                    
@@ -79,29 +80,37 @@ for (let i = 0; i < posts.length; i++) {
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button" href="#" data-postid="${posts[i].id}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone
+                        Piace a <b id="like-counter-${posts[i].id}" class="js-likes-counter">${posts[i].likes}</b> persone
                     </div>
                 </div> 
             </div>  
-        </div>`
+        </div>
+    `
+})
+
+    
+    
+
+const likeButton = document.querySelectorAll('.like-button');
+console.log(likeButton);
+likeButton.forEach((button, i) => {
+    likeButton[i].addEventListener("click", function() {
+        increaseLikes;
+    })
+})
+
+
+
+
+
+
+let increaseLikes = function () {
+    likeButton[i].classList.add('like-button--liked');
+    post[i].likes ++;
 }
-/*for (let i = 0; i < images.length; i++) {
-    itemsDom.innerHTML += `
-        <div class="item">
-            <div class="info">
-                <h2>${images[i].title}</h2>
-                <p>${images[i].description}</p>
-            </div>
-            <img src="${images[i].url}"/>
-        </div>`;
-    smallImg.innerHTML += `
-        <div class="small-img">
-            <img class="img-slide" src="${images[i].url}"
-        </div>    `
-}*/
