@@ -113,7 +113,6 @@ let increaseLikes = function () {
             button.classList.add('like-button--liked');
             document.getElementById("like-counter-" + posts[i].id).innerHTML = ++ posts[i].likes;
         })
-        if ()
     })
 }
 
